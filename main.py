@@ -1,36 +1,45 @@
-# python3
+class Node:
+    def __init__(self, value, position):
+        self.value = value
+        self.position = position
+        self.next = None
 
-from collections import namedtuple
+class Stack:
+    def __init__(self):
+        self.top = None
+        self.height = 0
 
-Bracket = namedtuple("Bracket", ["char", "position"])
+    def is_empty(self):
+        return self.height == 0
 
+    def push(self, value, position):
+        new_node = Node(value, position)
+        if self.is_empty():
+            self.top = new_node
+        else:
+            new_node.next = self.top
+            self.top = new_node
+        self.height += 1
 
-def are_matching(left, right):
-    return (left + right) in ["()", "[]", "{}"]
+    def pop(self):
+        if self.is_empty():
+            return None
+        temp = self.top
+        self.top = self.top.next
+        self.height -= 1
+        return temp
 
+def balancets(s):
+    stack = Stack()
+    brackets_map = {')': '(', '}': '{', ']': '['}
 
-def find_mismatch(text):
-    opening_brackets_stack = []
+    ######  Write your program here   ######
+    ######                            ######
+    ######                            ######
+    ######                            ######
+    ########################################
     
-    for i, next in enumerate(text):
-        print(i)
-        if next in "([{":
-            # Process opening bracket, write your code here
-            pass
- 
+    return "Success"
 
-        if next in ")]}":
-            # Process closing bracket, write your code here
-            pass
-
-
-def main():
-    text = input()
-    mismatch = find_mismatch(text)
-    # Printing answer, write your code here
-
-
-if __name__ == "__main__":
-    main()
-    
-    
+s = input("Ievadiet rindu: ")
+print(balancets(s))
